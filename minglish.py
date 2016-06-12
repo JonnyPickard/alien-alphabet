@@ -38,27 +38,25 @@ def build_edges(words, graph):
     return graph
 
 def topological_sort(graph):
-    in_degree = { u : 0 for u in graph }     # determine in-degree
-    for u in graph:                          # of each node
+    degree = { u : 0 for u in graph }
+    for u in graph:
         for v in graph[u]:
-            in_degree[v] += 1
+            degree[v] += 1
 
-    Q = deque()                 # collect nodes with zero in-degree
-    for u in in_degree:
-        if in_degree[u] == 0:
-            Q.appendleft(u)
+    nodes = deque()
 
-    L = []     # list for order of nodes
+    for u in degree:
+        if degree[u] == 0:
+            nodes.appendleft(u)
 
-    while Q:
-        u = Q.pop()          # choose node of zero in-degree
-        L.append(u)          # and 'remove' it from graph
+    output = []
+
+    while nodes:
+        u = nodes.pop()
+        output.append(u)
         for v in graph[u]:
-            in_degree[v] -= 1
-            if in_degree[v] == 0:
-                Q.appendleft(v)
+            degree[v] -= 1
+            if degree[v] == 0:
+                nodes.appendleft(v)
 
-    if len(L) == len(graph):
-        return L
-    else:                    # if there is a cycle,
-        return []
+    return output
