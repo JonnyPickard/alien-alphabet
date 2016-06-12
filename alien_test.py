@@ -1,4 +1,4 @@
-from minglish import answer
+from alien import answer
 import unittest
 
 class TestMyFunctions(unittest.TestCase):
