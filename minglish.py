@@ -6,7 +6,6 @@ def answer(words):
 
     return "".join(topological_sort(graph))
 
-#build graph
 def build_graph(words):
     characters = []
     alphabet = {}
@@ -20,15 +19,12 @@ def build_graph(words):
 
     return alphabet
 
-#compare letters between words to build edges
 def build_edges(words, graph):
     graph = graph
-    length = len(words)
 
     for i in range(len(words) -1):
         n = 0
-        print i
-
+        
         while (words[i])[n] == (words[i + 1])[n]:
             n += 1
         else:
