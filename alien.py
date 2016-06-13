@@ -1,6 +1,9 @@
 from collections import deque
 
 def answer(words):
+    if len(words) == 1:
+        return words[0]
+
     graph = build_graph(words)
     graph = build_edges(words, graph)
 
@@ -22,14 +25,18 @@ def build_graph(words):
 def build_edges(words, graph):
     graph = graph
 
-    for i in range(len(words) -1):
-        n = 0
-        
-        while (words[i])[n] == (words[i + 1])[n]:
-            n += 1
-        else:
-            graph[(words[i])[n]] += (words[i + 1])[n]
-            n = 0
+    length = len(words)
+
+    for i in range(length -1):
+        a = words[i]
+        b = words[i+1]
+
+        min_length = min(len(a), len(b))
+
+        for n in range(min_length):
+            if a[n] != b[n]:
+                graph[a[n]] += b[n]
+                break
 
     return graph
 
