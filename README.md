@@ -1,4 +1,4 @@
-Alien alphabet
+Alien Alphabet
 ==============
 
 The idea here was given a sorted dictionary of alien words to work out the alphabet.
@@ -21,4 +21,4 @@ This code is written in Python and I test drove the development using testtunit.
 To Do Next
 ----------
 
-Refactor the solution to be more agile and work faster. 
+Refactor the solution to be more agile and work faster.
